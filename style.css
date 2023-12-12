@@ -1,5 +1,5 @@
 ::-webkit-scrollbar {
-    width: 0.2vw;
+    width: 0.1vw;
 }
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey;
@@ -7,7 +7,7 @@
 }
 ::-webkit-scrollbar-thumb {
     border-radius: var(--fontxsmall);
-    background: rgba(255, 255, 255, 0.50);
+    background: rgba(255, 255, 255, 0.85);
 }
 :root{
     --fontxsmall: 0.73vw;
@@ -206,13 +206,14 @@ header h1 span{
     margin-left: 0.625vw;
     margin-right: 0.36vw;
 }
+/* CLOTHING CATEGORIES UI */
 .hero-container{
     position: absolute;
     width: max-content;
     left: 4.16vw;
     top: 9vh;
 }
-.hero-box h2{
+.hero-container h2{
     text-shadow: 0px 0px 88px rgba(255, 255, 255, 0.15);
     font-size: 2vw;
     font-weight: 700;
@@ -241,14 +242,17 @@ header h1 span{
     overflow: hidden;
     cursor: pointer;
 }
+.clothing-category:hover{
+    border: 1px solid rgba(255, 255, 255, 0.60);
+}
 .clothing-category:hover img{
-    transform: scale(1.7, 1.2);
+    transform: scale(1.2, 1.2);
 }
 .clothing-category img{
     width: 100%;
     height: 100%;
-    object-fit: scale-down;
-    transform: scale(1.5, 1.1);
+    /* object-fit: scale-down; */
+    /* transform: scale(1.2, 1.1); */
     transition: all .2s ease-in-out;
 }
 .clothing-category .category-name{
@@ -257,13 +261,32 @@ header h1 span{
     left: 0;
     width: 100%;
     z-index: 1;
-    text-align: center;
     font-size: 1vw;
     font-weight: 700;
     line-height: 100%; /* 20px */
     letter-spacing: 2.4px;
     text-transform: uppercase;
-    padding: 1vh 0;
-    background: rgba(38, 80, 94, 0.40);
     backdrop-filter: blur(4px);
+    height: 4.9vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* MAIN SHOP HEADER */
+.main-shop{
+    position: absolute;
+    top: 4.6vw;
+    left: 4.16vw;
+}
+.main-shop header{
+    display: flex;
+    align-items: center;
+}
+.main-shop .tab{
+    display: flex;
+    align-items: center;
+}
+.tab svg{
+    width: 2.96vh;
+    aspect-ratio: 1/1;
 }
