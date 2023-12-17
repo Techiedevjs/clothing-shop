@@ -41,6 +41,10 @@ button{
     opacity: 0;
     pointer-events: none;
 }
+.hide-item{
+    display: none !important;
+    transition: all .2s ease;
+}
 .hide-display{
     opacity: 0;
     position: absolute;
@@ -302,8 +306,18 @@ header h1 span{
     gap: 0.5vw;
     padding: 0 1.2vh;
     cursor: pointer;
-}   
+    transition: all .2s ease;
+}  
+.tab:hover{
+    background: rgba(255, 255, 255, 0.10);
+    border-radius: 0.5vw;
+} 
+.tab:hover p{
+    display: block;
+    color: white;
+}
 .tab p{
+    transition: all .2s ease;
     color: #00D9B2;
     font-size: 1.48vh;
     font-weight: 700;
@@ -315,8 +329,9 @@ header h1 span{
 .tab svg{
     width: 2.96vh;
     aspect-ratio: 1/1;
+    transition: all .2s ease;
 }
-.selected-tab{
+.selected-tab, .selected-tab:hover{
     border-radius: 0.5vw;
     background: rgba(0, 217, 178, 0.20);
 }
@@ -326,9 +341,11 @@ header h1 span{
 .selected-tab svg{
     width: 2.2vh;
     aspect-ratio: 1/1;
+    transition: all .2s ease;
 }
-.selected-tab p{
+.selected-tab p, .selected-tab:hover p{
     display: block;
+    color: #00D9B2;
 }
 .main-shop main{
     height: 67.87vh;
@@ -376,7 +393,7 @@ header h1 span{
     align-items: center;
     background: url(images/cloth-bg.svg);
     background-repeat: no-repeat !important;
-    background-size: cover !important;
+    background-size: contain !important;
     cursor: pointer;
     overflow: hidden;
     transition: all .2s ease;
@@ -384,15 +401,25 @@ header h1 span{
 .cloth:hover{
     background: url(images/cloth-hover.svg);
     background-repeat: no-repeat !important;
-    background-size: cover !important;
+    background-size: contain !important;
+}
+.cloth-selected, .cloth-selected:hover{
+    background: url(images/cloth-selected.svg);
+}
+.cloth-selected .cloth-type{
+    background: rgba(0, 33, 27, 0.60);
 }
 .cloth:hover .cloth-type{
     bottom: -100%;
 }
-.cloth img{
+.top img, .cloth img{
     width: 11.1vh;
     aspect-ratio: 1/1;
     margin:0 auto;
+}
+.bottom img{
+    width: 8.24vh;
+    aspect-ratio: 1/1;
 }
 .price-cont{
     position: absolute;
@@ -421,8 +448,8 @@ header h1 span{
     justify-content: center;
     align-items: center;
     background: rgba(24, 24, 24, 0.60);
-    border-bottom-left-radius: 0.9375vw;
-    border-bottom-right-radius: 0.9375vw;
+    border-bottom-left-radius: 1.667vh;
+    border-bottom-right-radius: 1.667vh;
     color: #FFF;
     font-size: 1.2vh;
     font-weight: 400;
@@ -430,7 +457,7 @@ header h1 span{
     letter-spacing: 1.04px;
     text-transform: uppercase;
 }
-.add-icon{
+.add-icon, .cancel-icon{
     width: 3.52vh;
     height: 3.52vh;
     position: absolute;
@@ -440,8 +467,233 @@ header h1 span{
     pointer-events: none;
     transition: all .2s ease;
 }
-.cloth:hover .add-icon{
+.add-icon:hover .first-rect{
+    fill-opacity: 0.8;
+    fill: #303030;
+}
+.add-icon:hover .second-rect{
+    fill-opacity: 0.25;
+}
+.cancel-icon:hover .second-rect{
+    fill-opacity: 0.35;
+}
+.add-icon:hover .fourth-rect, .cancel-icon .fourth-rect{
+    stroke-opacity: 0.65;
+}
+.add-icon:hover .third-rect{
+    fill-opacity: 0.25;
+}
+.cloth:hover .add-icon, .cloth:hover .cancel-icon{
     opacity: 1;
     pointer-events: all;
     cursor: pointer;
+}
+.purchase-total{
+    margin-top: 5.37vh;
+    width: 64.6vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.purchase-btn{
+    border-radius: 1.48vh;
+    background: #D5A730;
+    gap: var(--fontsmall);
+    height: 5.556vh;
+    aspect-ratio: 296/60;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: #000;
+    font-size: 0.9375vw;
+    font-weight: 700;
+    letter-spacing: 2.16px;
+    text-transform: uppercase;
+    pointer-events: none;
+    opacity: .35;
+    cursor: pointer;
+}
+.purchase-btn:hover{
+    background: #FFC93E;
+}
+.purchase-btn svg{
+    width: 2.222vh;
+    aspect-ratio: 1/1;
+}
+.refresh{
+    cursor: pointer;
+    height: 5.556vh;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.66vh;
+    border: 1px solid rgba(242, 64, 64, 0.45);
+    background: rgba(242, 64, 64, 0.15);
+    transition: all .2s ease;
+}
+.refresh svg{
+    width: 2.96vh;
+    height: 2.96vh;
+    transition: all .2s ease;
+}
+.refresh:hover{
+    background: url(images/refresh-hover-bg.svg);
+    border: none;
+    /* border-radius: 0; */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.refresh:hover svg path{
+    fill: #FF6A6A;
+}
+.total-cont{
+    display: flex;
+    align-items: center;
+    gap: 0;
+    font-size: 1.85vh;
+    font-weight: 700;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+}
+.total-cont svg{
+    height: 1.48vh;
+    aspect-ratio: 21.6/18;
+}
+.cloth-details{
+    position: absolute;
+    left: calc(100% + 3.75vw);
+    letter-spacing: 2.88px;
+    width: max-content;
+}
+.cloth-details .lix-price{
+    display: flex;
+    gap: 1vh;
+    align-items: center;
+    color: #FFF;
+    font-size: 2.22vh;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.cloth-details .lix-price svg{
+    height: 2.22vh;
+    aspect-ratio: 28.869/24;
+}
+.cloth-details p{
+    font-size: 1.85vh;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.cloth-details h2{
+    margin: 2vh 0;
+    text-transform: uppercase;
+}
+.confirm-purchase-cont{
+    background: url(images/green-gradient.png);
+}
+.cancel-purchase-cont{
+    background: url(images/red-gradient.png);
+}
+.pop-up{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.pop-up section, .blur{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.blur{
+    width: 100vh;
+    aspect-ratio: 1/1;
+    z-index: -1;
+}
+.blur img{
+    width: 100%;
+    height: 100%;
+}
+.icon{
+    width: 2.8125vw;
+    height: 2.8125vw;
+}
+.pop-up h3{
+    font-size: 1.875vw;
+    font-weight: 700;
+    letter-spacing: 4.32px;
+    text-transform: uppercase;
+    margin-top: 2.3vh;
+    margin-bottom: 4.6vh;
+}
+.pop-up h3 span{
+    color: #41CCB1;
+    font-weight: 400;
+}
+.pop-up h4{
+    color: rgba(255, 255, 255, 0.45);
+    font-size: var(--fontmedium);
+    font-weight: 500;
+    letter-spacing: 0.9px;
+    margin-top: var(--fontxsmall);
+}
+.pop-up p{
+    font-size: 0.9375vw;
+    font-weight: 500;
+    letter-spacing: 0.9px;
+    margin-bottom: 3vh;
+    justify-content: center;
+}
+.pop-up p span{
+    font-size: 1vw;
+    font-weight: 700;
+    letter-spacing: 2.4px;
+}
+.pop-up button{
+    color: rgba(255, 255, 255, 0.75);
+    font-size: var(--fontsmall);
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+.cancel{
+    width: 7.291vw;
+    aspect-ratio: 140/60;
+    background: url(images/cancel.svg);
+    margin-right: 0.5vw;
+}
+.cancel:hover{
+    background: url(images/cancel-hover.svg);
+}
+.confirm, .confirm-green{
+    width: 8.8vw;
+    aspect-ratio: 169/60;
+    background: url(images/confirm.svg);
+}
+.confirm:hover{
+    background: url(images/confirm-red-hover.svg);
+}
+.confirm-green{
+    background: url(images/confirm-green.svg);
+}
+.confirm-green:hover{
+    background: url(images/confirm-green-hover.svg);
+}
+.total-cart-items{
+    color: #FFC93E;
+    font-size: 0.9375vw;
+    font-weight: 700;
+    letter-spacing: 0.9px;
+}
+.pop-up .lix{
+    height: 1.667vh;
+    aspect-ratio: 21.65/18;
 }
