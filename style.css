@@ -587,6 +587,12 @@ header h1 span{
 .cloth-details h2{
     margin: 2vh 0;
     text-transform: uppercase;
+    text-align: left;
+}
+.cloth-details h2 svg{
+    height: 3.81vh;
+    aspect-ratio: 236/41.125 !important;
+    text-align: left;
 }
 .confirm-purchase-cont{
     background: url(images/green-gradient.png);
